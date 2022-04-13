@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+  postgres:
+    image: debezium/example-postgres:1.1
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  mysql:
+    image: debezium/example-mysql:1.1
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_USER=mysqluser
+      - MYSQL_PASSWORD=mysqlpw
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"

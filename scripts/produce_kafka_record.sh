@@ -1,0 +1,1 @@
+docker exec -i kafka_kafka_1 kafka-console-producer.sh --broker-list :9092 --topic input < src/it/resources/data.json
