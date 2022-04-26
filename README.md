@@ -30,11 +30,29 @@ Unit Test
 - sbt test
 
 Integration Test
-- sbt it:test
+- sbt itTest
 
 Build
 - sbt compile
 
+Run
+Start a socket server and Enter data once Flink App is running
+- nc -lk 9999
+- Enter (1,john) Press [Enter]
+- Enter (2,rambo) Press [Enter]
+
+Start a sbt shell
+- sbt
+
+Type the following command
+
+-  run localhost 9999
+ 
+  OR
+  
+Directly run this command from terminal
+- sbt "run localhost 9999"
+  
 Assembly/Fat Jar
 - sbt assembly
 

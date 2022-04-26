@@ -19,11 +19,13 @@ import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 
 
 
-class SocketStreamPipeline extends FlinkStreamPipeline[String,Iterable[String],Person] with java.io.Serializable {
-  def start(args:Array[String]  ) = {
-
+class SocketStreamPipeline   extends FlinkStreamPipeline[String,Iterable[String],Person] with java.io.Serializable {
+  //def start(args:Array[String],env:StreamExecutionEnvironment ) = {
+    def start(env:StreamExecutionEnvironment ) = {
+      val args = Array("localhost","9999")
     if(args.length < 2){
       //System.err("argument not provided properly")
+      System.err.println("ERROR: argument not provided")
       System.exit(-1)
 
     }
@@ -31,7 +33,7 @@ class SocketStreamPipeline extends FlinkStreamPipeline[String,Iterable[String],P
     properties.setProperty("hostName",args(0))
     properties.setProperty("port",args(1))
 
-    val env = StreamExecutionEnvironment.getExecutionEnvironment
+
 
     env.getCheckpointConfig.setCheckpointStorage("file:///Users/sambhav.gupta/Documents/DECodePair/UsefulExampleTests/FlinkTry/FlinkAppTemplate/my-checkpoint-dir")
 

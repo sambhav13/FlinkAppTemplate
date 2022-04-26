@@ -1,7 +1,7 @@
 package npci.org.data
 
 import npci.org.data.pipeline.SocketStreamPipeline
-import org.apache.flink.table.descriptors.Kafka
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 
 object StreamingPipeline{
   def main(args:Array[String]) = {
@@ -10,7 +10,13 @@ object StreamingPipeline{
 
     // Creating and startin the Pipeline
     val socketStreamPipeline = new SocketStreamPipeline()
-    socketStreamPipeline.start(args)
+
+    //Create Streaming  Execution Env
+    val env = StreamExecutionEnvironment.getExecutionEnvironment
+
+    //socketStreamPipeline.start(args,env)
+    socketStreamPipeline.start(env)
+    println("Streaming Pipeline ended....")
   }
 }
 
